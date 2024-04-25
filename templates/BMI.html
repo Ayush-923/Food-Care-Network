@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Food Care Network</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+    <div class="main">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="nav-logo"><img src="{{ url_for('static', filename='images/Logo2.jpg') }}" alt="logo"
+                        class="logo" /></a>
+                <div class="nav-toggle">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </div>
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="{{ url_for('.homey', _anchor='exactlocation') }}" class="nav-link">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('.mission', _anchor='exactlocation') }}" class="nav-link">MISSION</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('.aboutus', _anchor='exactlocation') }}" class="nav-link">ABOUT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('.contact', _anchor='exactlocation') }}" class="nav-link">CONTACT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('.bmi', _anchor='exactlocation') }}" class="nav-link">BMI</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <p class="Contact">BMI Calculator</p>
+    <form>
+        <label>Weight:</label>
+        <input type="number" name="weight" placeholder="Enter your Weight in KG" required><br><br>
+        <label>Height:</label>
+        <input type="number" name="height" placeholder="Enter your Height in CM" step="0.01" required><br><br>
+        <button type="submit">Calculate BMI</button>
+    </form>
+    <br>
+    <p>BMI: <span id="bmi"></span></p>
+    <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let weight = document.querySelector("input[name=weight]").value;
+            let height = document.querySelector("input[name=height]").value;
+            let bmi = (weight / (height * height)) * 10000;
+            document.querySelector("#bmi").textContent = bmi.toFixed(2);
+        });
+    </script>
+
+</body>
+<footer>
+    <p>&copy; Food Care Network - Designed in the interest of public 2023</p>
+</footer>
+
+</html>

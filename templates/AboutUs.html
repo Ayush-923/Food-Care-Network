@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Food Care Network</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+  <div class="main">
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo"><img src="{{ url_for('static', filename='images/Logo2.jpg') }}" alt="logo"
+            class="logo" /></a>
+        <div class="nav-toggle">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </div>
+        <div class="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="{{ url_for('.homey', _anchor='exactlocation') }}" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('.mission', _anchor='exactlocation') }}" class="nav-link">MISSION</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('.aboutus', _anchor='exactlocation') }}" class="nav-link">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('.contact', _anchor='exactlocation') }}" class="nav-link">CONTACT</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('.bmi', _anchor='exactlocation') }}" class="nav-link">BMI</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <p class="Contact">Meet the Minds Driving Our Cause</p>
+    <section>
+
+      <article>
+        <img src="{{ url_for('static', filename='images/Atharva.jpg') }}" width="100px" />
+        <h2>Atharva Sharma</h2>
+      </article>
+
+      <article>
+        <img src="{{ url_for('static', filename='images/Ayush.png') }}" width="100px" />
+        <h2>Ayush Kumar Gupta
+        </h2>
+      </article>
+
+      <article>
+        <img src="{{ url_for('static', filename='images/bhoomi.jpg') }}" width="100px" />
+        <h2>Bhoomi Sharma</h2>
+      </article>
+
+      <article>
+        <img src="{{ url_for('static', filename='images/Disha.jpg') }}" width="100px" />
+        <h2>Disha Chauhan
+        </h2>
+      </article>
+
+      <article>
+        <img src="{{ url_for('static', filename='images/palak.jpg') }}" width="100px" />
+        <h2>Palak Garg
+        </h2>
+      </article>
+
+      <article>
+        <img src="{{ url_for('static', filename='images/Sir.jpg') }}" width="100px" />
+        <h2>Dr.Mohammad Sultan Alam
+        </h2>
+      </article>
+
+    </section>
+
+  </div>
+  <footer>
+    <p>&copy; Food Care Network - Designed in the interest of public 2023</p>
+  </footer>
+</body>
+
+</html>

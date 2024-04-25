@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Food Care Network</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+  <div class="main">
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo"><img src="{{ url_for('static', filename='images/Logo2.jpg') }}" alt="logo"
+            class="logo" /></a>
+        <div class="nav-toggle">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </div>
+        <div class="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="{{ url_for('.homey', _anchor='exactlocation') }}" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('.mission', _anchor='exactlocation') }}" class="nav-link">MISSION</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('.aboutus', _anchor='exactlocation') }}" class="nav-link">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('.contact', _anchor='exactlocation') }}" class="nav-link">CONTACT</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('.bmi', _anchor='exactlocation') }}" class="nav-link">BMI</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <table>
+      <tr style="width: 100%">
+        <td style="width: 50%; float: left">
+          <div class="container">
+            <div class="info" style="width: 100%; text-align: justify">
+              <h1><br />The Genesis of Our Vision.</h1>
+              <p style="text-align: justify;">
+                In September 2022, during our immersive learning experience at IIM Bangalore, a striking poster caught
+                our attention, displaying the staggering daily amount of food wasted. This poignant encounter sparked a
+                profound realization: while we couldn't individually halt food wastage, we could repurpose surplus food
+                to aid those in need.
+                <br><br>
+                Motivated by this revelation, our team embarked on a journey to turn this concept into reality. Inspired
+                by the poster's impactful message, we envisioned a solution that would bridge the gap between surplus
+                food and hunger. This pivotal moment marked the genesis of our idea to create a platform where surplus
+                food could find its way to those who needed it most.
+                <br><br>
+                From this humble beginning, our vision blossomed into a transformative initiative. Fueled by a desire to
+                make a tangible difference, we channeled our energy into developing a website that would facilitate the
+                seamless distribution of surplus food to communities in need. Today, our platform stands as a testament
+                to the power of innovation and compassion, empowering individuals to enact positive change in the fight
+                against food wastage.
+              </p>
+              <br /><br />
+            </div>
+          </div>
+        </td>
+        <td style="width: 50%; float: left">
+          <div class="d3js12">
+            <h3 style="color: #008080;">
+              <br /><br /><br /><br />PERCENTAGES OF NUMBER OF PEOPLE UNABLE TO AFFORD A HEALTHY DIET.
+            </h3>
+
+            <script src="https://d3js.org/d3.v6.min.js"></script>
+
+            <svg id="chart" width="700" height="350"></svg>
+
+            <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+          </div>
+          <style>
+            h3 {
+              font-size: 1.5em;
+              text-align: center;
+            }
+
+            .d3js12 {
+              text-align: center;
+            }
+
+            svg text {
+              font-size: 16px;
+            }
+          </style>
+        </td>
+      </tr>
+    </table>
+
+    <br><br>
+    <h1 style="margin-left: 14%; text-decoration: underline; color: #003333;">A MESSAGE FROM IIM BANGALORE THAT BECAME
+      OUR INSPIRATION
+    </h1>
+    <div class="layout-3"><img src="{{ url_for('static', filename='images/IIM.jpg')  }}" alt="logo" class="layout-3"
+        width="500px" />
+    </div>
+
+
+
+    <div style="width: 100%">
+      <div style="width: 50%; float: left">
+        <!-- Content for column 1 -->
+      </div>
+      <div style="width: 50%; float: left">
+        <!-- Content for column 2 -->
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; Food Care Network - Designed in the interest of public 2023</p>
+  </footer>
+</body>
+
+</html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    const data = [
+      { country: "Central Asia", percentage: 16.9 },
+      { country: "Eastern and South-eastern Asia", percentage: 23.9 },
+      { country: "Europe", percentage: 1.7 },
+      { country: "Latin America and the Caribbean", percentage: 19.3 },
+      { country: "Northern Africa and Western Asia", percentage: 45.0 },
+      { country: "Northern America", percentage: 1.4 },
+      { country: "Southern Asia", percentage: 71.3 },
+    ];
+
+    // Create a new D3 selection for the chart
+    const chart = d3.select("#chart");
+
+    // Set up some constants for the chart
+    const margin = { top: 20, right: -50, bottom: 100, left: 300 };
+    const width = 500 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
+
+    // Create the scales for the x and y axes
+    const xScale = d3.scaleLinear().domain([0, 100]).range([0, width]);
+    const yScale = d3
+      .scaleBand()
+      .domain(data.map((d) => d.country))
+      .range([0, height])
+      .padding(0.1);
+
+    // Create the x and y axes
+    const xAxis = d3.axisBottom(xScale);
+    const yAxis = d3.axisLeft(yScale);
+
+    // Create a new group for the chart
+    const g = chart
+      .append("g")
+      .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    // Create the bars
+    g.selectAll(".bar")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", 0)
+      .attr("y", (d) => yScale(d.country))
+      .attr("width", (d) => xScale(d.percentage))
+      .attr("height", yScale.bandwidth());
+
+    // Add the x and y axes
+    g.append("g")
+      .attr("class", "axis")
+      .attr("transform", `translate(0, ${height})`)
+      .call(xAxis);
+    g.append("g").attr("class", "axis").call(yAxis);
+  });
+</script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
